@@ -1,5 +1,7 @@
+from kivy.core.window import Window
 from kivymd.app import MDApp
 from kivy.lang import Builder
+#import os
 
 
 
@@ -8,15 +10,17 @@ from libs.multiplicar import Multiplicar
 from libs.resultados import Resultados
 from libs.ajustes import Ajustes
 from libs.reiniciar import Reiniciar_BaseDatos
-import os
+from libs.sumar import Sumar
 
 #Clock.max_iteration = 1000 
-
+#path_global = os.getcwd()
+#print(path_global)
 class AppMulti(MDApp):
     
     
     
     def build(self):
+        #Window.size = (480,720)
         self.title = "AppMultiplicar"
         self.theme_cls.primary_palette = "Teal"
 
