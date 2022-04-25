@@ -100,6 +100,7 @@ android.permissions = INTERNET
 
 # (int) Target Android API, should be as high as possible.
 #android.api = 27
+android.api = 30
 
 # (int) Minimum API your APK / AAB will support.
 #android.minapi = 21
@@ -285,6 +286,7 @@ android.allow_backup = True
 
 # (str) The format used to package the app for release mode (aab or apk).
 # android.release_artifact = aab
+#android.release_artifact = aab
 
 #
 # Python for android (p4a) specific
@@ -297,6 +299,7 @@ android.allow_backup = True
 #p4a.fork = kivy
 
 # (str) python-for-android branch to use, defaults to master
+#p4a.branch = develop
 #p4a.branch = master
 
 # (str) python-for-android specific commit to use, defaults to HEAD, must be within p4a.branch
