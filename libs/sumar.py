@@ -19,6 +19,8 @@ class Sumar(Screen):
         super().__init__(**kwargs)
         self.app = MDApp.get_running_app()
         self.celdas = []
+        self.resultados = []
+        self.restos = []
 
     def on_pre_enter(self, *args):
         self.app.title = "Sumar"
@@ -113,6 +115,8 @@ class Sumar(Screen):
 
     def escribir_sumandos(self, mas):
         #print("el numero de filas es: ", self.num_fil)
+        self.restos = []
+        self.resultados = []
         for i in range(0,self.num_fil):
             for j in range(0,self.num_col):
                 if (i == 0 and j >= (7-mas)) or (i == self.num_fil-1 and j >= (7-mas)):
@@ -121,15 +125,15 @@ class Sumar(Screen):
                         #hint_text = "1..9",
                         input_type = "number",
                         halign ="center",
-                        #font_size = "25",
-                        #color_mode = 'custom',
                         text_color = (1.0, 1.0, 1.0, 1)
-                        #foreground_color = (.0, .0, .0, 1)
                     )
                     if i == 0:
                         self.texto.font_size = '45'
+                        self.restos.append(self.texto)
                     else:
                         self.texto.font_size = '65'
+                        self.resultados.append(self.texto)
+
                     self.celdas.append(self.texto)
                     self.grid.add_widget(self.texto)
 
@@ -184,6 +188,61 @@ class Sumar(Screen):
         self.digitos.text = ""
         #return self.int_sumandos, self.int_digitos
 
-    def update_rect(self, *args):
-        self.rect.pos = self.pos
-        self.rect.size = self.size
+    def mostrar_comprobar_resultado(self):
+        try:
+            
+            self.comprobar_resultado()
+        except AttributeError as e:
+            print(f"Error obtenido es: {e}")
+            self.texto_ayuda = self.ids["informacion"]
+            self.texto_ayuda.text = f"Pulsa Botón Calcular"  
+            self.texto_ayuda.haling = "center"
+
+    
+    def comprobar_resultado(self):
+
+        total = 2 * len(self.resultados)
+        #print(f"los resultados estan en: {self.resultados}")
+        #print(f"los restos estan en: {self.restos}")
+        resultados = [resultado.text for resultado in self.resultados if not isinstance(resultado, str)]
+        restos = [resto.text for resto in self.restos if not isinstance(resto, str)]
+        resultados = self.modificar_lista(resultados)
+        restos = self.modificar_lista(restos)
+        self.resultados = self.modificar_lista(self.resultados)
+        self.restos = self.modificar_lista(self.restos)
+        #print(restos, resultados)
+        errores_restos = comprobar(restos, self.matriz[0])
+        errores_resultados = comprobar(resultados, self.matriz[-1])
+        self.escribir_comprobar(errores_resultados, self.resultados)
+        self.escribir_comprobar(errores_restos, self.restos)
+        #print(f"los resultados estan en: {resultados}")
+        #print(f"los restos estan en: {restos}")
+        #print(f"los errores de restos estan en: {errores_restos}")
+        #print(f"los errores de resultados estan en: {errores_resultados}")
+        #print(f"los errores de restos estan en: {errores_restos}")
+        
+    def modificar_lista(self, lista):
+        for elemento in range(0, len(lista)):
+            if lista[elemento] == "":
+                lista[elemento] = '-'
+        lista1 = ["-" for elemento in range(0,(8-len(lista)))]
+        lista1.extend(lista)
+        return lista1
+
+    def escribir_comprobar(self, indices, lista):
+        #print(f"pantalla: {indices}\nmatriz:{lista}")
+        for digito in lista:
+
+            if not isinstance(digito, str):
+                digito.text_color = (1.0, 1.0, 1.0, 1)
+                digito.hint_text = ''
+
+        for error in indices:
+            
+            if not isinstance(lista[error], str):
+                lista[error].text_color = (1.0, .0, .0, 1)
+                lista[error].text = ''
+
+                if lista[error].text == "":
+                    lista[error].hint_text = '__'
+                    lista[error].haling = "center"
