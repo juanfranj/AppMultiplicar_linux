@@ -80,7 +80,7 @@ class Sumar(Screen):
             for j in range(0,self.num_col):
                 if i == 0 and self.matriz[i][j] != '-':
                     self.texto = Label(text = f"{self.matriz[i][j]}",
-                     font_size = "45",
+                     font_size = "25sp",
                      font_name = "UrbanClass",
                      color = (.36, .68, .89, 1)
                     )
@@ -88,13 +88,13 @@ class Sumar(Screen):
                     self.grid.add_widget(self.texto)
 
                 elif self.matriz[i][j] != '-' and i != self.num_fil-2:
-                    self.texto = Label(text = f"{self.matriz[i][j]}", font_size = "65", font_name = "UrbanClass",)
+                    self.texto = Label(text = f"{self.matriz[i][j]}", font_size = "35sp", font_name = "UrbanClass",)
                     self.celdas.append(self.texto)
                     self.grid.add_widget(self.texto)
 
                 elif i == self.num_fil-2 and j >= (7-mas):
                     self.texto = Label(text = f"_______")
-                    self.texto.font_size = "80"
+                    self.texto.font_size = "40sp"
                     #self.texto.size_hint = (1., .5)
                     #self.texto.height = "20"
                     #self.texto.valign = "top"
@@ -131,23 +131,23 @@ class Sumar(Screen):
                         hint_text = '__'
                     )
                     if i == 0:
-                        self.texto.font_size = '45'
+                        self.texto.font_size = '25sp'#45
                         self.restos.append(self.texto)
                     else:
-                        self.texto.font_size = '65'
+                        self.texto.font_size = '35sp'#65
                         self.resultados.append(self.texto)
 
                     self.celdas.append(self.texto)
                     self.grid.add_widget(self.texto)
 
-                elif self.matriz[i][j] != '-' and i != self.num_fil-2:
-                    self.texto = Label(text = f"{self.matriz[i][j]}", font_size = "65", font_name = "UrbanClass")
+                elif self.matriz[i][j] != '-' and i != self.num_fil-2:#65
+                    self.texto = Label(text = f"{self.matriz[i][j]}", font_size = "35sp", font_name = "UrbanClass")
                     self.celdas.append(self.texto)
                     self.grid.add_widget(self.texto)
 
                 elif i == self.num_fil-2 and j >= (7-mas):
                     self.texto = Label(text = f"_______")
-                    self.texto.font_size = "80"
+                    self.texto.font_size = "40sp"#80
                     #self.texto.size_hint = (1., .2)
                     #self.texto.height = "30"
                     #self.texto.valign = "top"
