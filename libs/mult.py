@@ -21,12 +21,13 @@ def multiplicar(total, texto, resultado, pasar, texto_multi, multi, tablas_chk, 
     try:
         if repaso:
             num = numero_errores()
+        elif len(tablas) == 0:
+            num = 0
         else:
             num = int(total.text)
-            if len(tablas) == 0:
-                num = 0
+            
     except:
-        num = 0
+        num = 5
 
     texto.text = ""
     mul = 1
@@ -35,12 +36,14 @@ def multiplicar(total, texto, resultado, pasar, texto_multi, multi, tablas_chk, 
     while mul <= num:
         try:
             a, b = numeros_random(tablas, repaso)
-            texto_multi.font_size = "200"
-            #texto.font_size = "120"
+            texto_multi.font_size = "60sp"
+            texto.font_size = "40sp"
             texto_multi.text = (f"{a}x{b}")
             multi.text = (f"Total: {num}     Realizadas: {mul}")
             fin_cuenta = False
             while not fin_cuenta:
+                texto_multi.font_size = "60sp"
+                texto.font_size = "40sp"
                 texto.text = ""
                 semaforo.acquire()
                 
@@ -58,30 +61,31 @@ def multiplicar(total, texto, resultado, pasar, texto_multi, multi, tablas_chk, 
                     path = os.getcwd()+ "/files/errores.txt"
                     escribir_fichero(f"{a}x{b}", path)
                     errores += 1
+                    texto.font_size = "30sp"
                     if error == 1:
-                        texto.text = "Piensa un poco más ..."
+                        texto.text = "Piensa un poco mas ..."
                         sleep(1)
                         error -= 1
                     else:
-                        texto.text = f"Te has equivocado, inténtalo otra vez"
+                        texto.text = f"Intentalo otra vez"
                         sleep(1)
                         error += 1
                    
         except:
-            texto.text = "Introduce un número "
+            texto.text = "Introduce un numero "
             sleep(1)
             
     modificar_archivo()
-    texto_multi.font_size = "100"
-    texto.font_size = "100"  
+    texto_multi.font_size = "30sp"
+    texto.font_size = "30sp"  
 
     if num > 0:
         texto_multi.text = f"Errores: {errores}"
         texto.text = f"Multiplicaciones: {num}"
     else:
         if not repaso:
-            texto_multi.text = f"Introduce número de"
-            texto.text =f"Multiplicaciones"
+            texto_multi.text = f"Elige las tablas"
+            texto.text =f"para repasar"
             multi.text = ""
         else:
             texto_multi.text = f"No existen errores"
