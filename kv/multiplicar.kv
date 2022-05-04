@@ -31,8 +31,8 @@
                             text: "Comenzar"
                             theme_text_color: "Custom"
                             text_color: 1, 1, 1, 1
-                            #md_bg_color: 0.17, 0.62, .35, 1
-                            md_bg_color: app.theme_cls.primary_color
+                            md_bg_color: 0.3, 0.3, .3, 1
+                            font_style: "H6"
                             on_release: root.boton_comenzar()
                             
 
@@ -44,8 +44,8 @@
                             text: "Errores"
                             theme_text_color: "Custom"
                             text_color: 1, 1, 1, 1
-                            #md_bg_color: 0.17, 0.62, .35, 1
-                            md_bg_color: app.theme_cls.primary_color
+                            md_bg_color: 0.3, 0.3, .3, 1
+                            font_style: "H6"
                             on_release: root.boton_error()
 
                 BoxLayout:
@@ -204,26 +204,26 @@
 
                 MDFillRoundFlatButton:
 
-                    pos_hint: {"x":0.2, "center_y":.5}
+                    pos_hint: {"x":0.05, "center_y":.5}
                     #size_hint: 0.3, None
                     id: limpiar_tablas
-                    text: "Limpiar tablas"
+                    text: "Limpiar Tablas"
                     theme_text_color: "Custom"
                     text_color: 1, 1, 1, 1
-                    #md_bg_color: 0.17, 0.62, .35, 1
-                    md_bg_color: app.theme_cls.primary_color
+                    md_bg_color: 0.3, 0.3, .3, 1
+                    font_style: "H6"
                     on_release: root.limpiar_tablas()
                     
 
                 MDFillRoundFlatButton:
                     
-                    pos_hint: {"x":.6, "center_y":.5}
+                    pos_hint: {"x":.5, "center_y":.5}
                     #size_hint: 1.0, None
-                    text: "Completar tablas"
+                    text: "Completar Tablas"
                     theme_text_color: "Custom"
                     text_color: 1, 1, 1, 1
-                    #md_bg_color: 0.17, 0.62, .35, 1
-                    md_bg_color: app.theme_cls.primary_color
+                    md_bg_color: 0.3, 0.3, .3, 1
+                    font_style: "H6"
                     on_release: root.rellenar_tablas()
         
         

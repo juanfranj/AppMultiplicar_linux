@@ -1,13 +1,13 @@
 
 <Sumar>
     BoxLayout:
-        #padding: 5
-        spacing: 5
+        #padding: "5dp", "5dp"
+        #spacing: 5
         orientation: "vertical"
 
         canvas:
             Color:
-                rgba: .55, .27, .07, 1
+                rgba: .43, .17, .0, 1
             Rectangle:
                 pos: self.pos
                 size: self.size
@@ -19,7 +19,7 @@
             canvas:
                 Color:
                     rgba: .04, .33, .27, 1
-                RoundedRectangle:
+                Rectangle:
                     pos: self.pos
                     size: self.size
                     #radius:[(20.0, 20.0), (20.0, 20.0), (20.0, 20.0), (20.0, 20.0)]
@@ -38,7 +38,7 @@
 
                 MDTextFieldRect:
                     id: sumandos
-                    pos_hint:{"center_x":.35, "center_y": 0.5}
+                    pos_hint:{"center_x":.34, "center_y": 0.5}
                     size_hint:(.09, .32)
                     hint_text: "[2-5]"
                     input_type: "number"
@@ -46,7 +46,7 @@
                     halign: "center"
                 
                 MDLabel:
-                    pos_hint: {"center_x":.53, "center_y":.5}
+                    pos_hint: {"center_x":.51, "center_y":.5}
                     size_hint: (.3, .5)
                     font_style: "H6"
                     font_name : "Urban Class"
@@ -57,7 +57,7 @@
 
                 MDTextFieldRect:
                     id: digitos
-                    pos_hint:{"center_x":.72, "center_y": 0.5}
+                    pos_hint:{"center_x":.69, "center_y": 0.5}
                     hint_text: "[1-4]"
                     size_hint:(.09, .32)
                     input_type: "number"
@@ -66,18 +66,19 @@
                 
                 MDFillRoundFlatButton:
 
-                    pos_hint: {"x":0.78, "center_y":.5}
+                    pos_hint: {"x":0.74, "center_y":.5}
                     #size_hint: 0.3, None
                     id: calcular
                     text: "Comenzar"
                     theme_text_color: "Custom"
                     text_color: 1, 1, 1, 1
                     md_bg_color: 0.3, 0.3, .3, 1
-                    font_style: "Subtitle1"
+                    font_style: "H6"
+                    font_size: "17sp"
                     on_release: root.mostrar_suma()
         
         BoxLayout:
-            size_hint: (1,.8)
+            size_hint: (1,.9)
             orientation: "vertical"
             
             canvas:
@@ -91,10 +92,11 @@
                 size_hint: (1,.05)
                 MDLabel:
                     id: informacion
-                    pos_hint: {"center_x":.52, "center_y":.5}
+                    pos_hint: {"x":.5, "top":.5}
                     size_hint: (.3, .5)
                     font_style: "H6"
                     font_name : "Urban Class"
+                    font_size: "30sp"
                     theme_text_color: "Custom"
                     text_color: 1, 1, 1, 1
                     halign: "center"
@@ -107,13 +109,12 @@
                     id: pizarra
                     GridLayout:
                         id:grid
-                        size_hint: (1, .9)
-                        pos_hint: {"x":.0, "y":.1}
+                        size_hint: (1, .92)
+                        pos_hint: {"x":.0, "top":1}
                         
-                    
                     MDFillRoundFlatButton:
                         id: boton_calcular
-                        size_hint: (.4, .1)
+                        size_hint: (.4, .08)
                         pos_hint: {"center_x":0.25, "center_y":.06}
                         text: "Resultado"
                         theme_text_color: "Custom"
@@ -124,7 +125,7 @@
                     
                     MDFillRoundFlatButton:
                         id: boton_comprobar
-                        size_hint: (.4, .1)
+                        size_hint: (.4, .08)
                         pos_hint: {"center_x":0.75, "center_y":.06}
                         text: "Comprobar"
                         theme_text_color: "Custom"

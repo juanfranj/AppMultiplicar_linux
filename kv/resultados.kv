@@ -14,7 +14,7 @@
             #orientation: "vertical"
             canvas:
                 Color:
-                    rgba:  0, .4, 0, 0.1
+                    rgba: .04, .33, .27, 1
                 RoundedRectangle:
                     size: self.size
                     pos: self.pos
@@ -34,35 +34,38 @@
                 
             MDFillRoundFlatButton:
 
-                pos_hint: {"x":0, "center_y":.5}
+                pos_hint: {"x":0.1, "center_y":.5}
                 #size_hint: 0.3, None
                 id: clear
                 text: "Clear"
                 theme_text_color: "Custom"
                 text_color: 1, 1, 1, 1
-                md_bg_color: app.theme_cls.primary_color
+                md_bg_color: 0.3, 0.3, .3, 1
+                font_style: "H6"
                 on_release: root.clear_canvas_tablas()
 
             MDFillRoundFlatButton:
 
-                pos_hint: {"x":0.5, "center_y":.5}
+                pos_hint: {"x":0.6, "center_y":.5}
                 #size_hint: 0.3, None
                 id: resultados
                 text: "Resultados"
                 theme_text_color: "Custom"
                 text_color: 1, 1, 1, 1
-                md_bg_color: app.theme_cls.primary_color
+                md_bg_color: 0.3, 0.3, .3, 1
+                font_style: "H6"
                 on_release: root.tabla_resultados()
             
             MDFillRoundFlatButton:
 
-                pos_hint: {"x":0.75, "center_y":.5}
+                pos_hint: {"x":0.85, "center_y":.5}
                 #size_hint: 0.3, None
                 id: estadisticas
                 text: "Estadisticas"
                 theme_text_color: "Custom"
                 text_color: 1, 1, 1, 1
-                md_bg_color: app.theme_cls.primary_color
+                md_bg_color: 0.3, 0.3, .3, 1
+                font_style: "H6"
                 on_release: root.tabla_estadisticas()
 
             # MDFillRoundFlatButton:
