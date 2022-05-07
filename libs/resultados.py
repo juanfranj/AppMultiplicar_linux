@@ -89,6 +89,7 @@ class Resultados(Screen):
 
     def on_pre_enter(self, *args):
         self.app.title = "Resultados"
+        self.clear_canvas_tablas()
     
     def update_rect(self, *args):
         self.rect.pos = self.pos

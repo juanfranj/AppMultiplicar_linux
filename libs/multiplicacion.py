@@ -63,7 +63,7 @@ class Multiplicacion(Screen):
         self.grid.cols = 8
         self.grid.rows = 15
         self.escribir_multiplicacion_media()
-        self.imprimir_resultado(self.matriz)
+        #self.imprimir_resultado(self.matriz)
         self.texto_ayuda.text = f"Multiplicar"
 
     def mostrar_resultado(self):
@@ -245,7 +245,7 @@ class Multiplicacion(Screen):
         errores = self.comprobar_multi(resultados_pantalla)
         self.escribir_errores(errores)
 
-        imprimir_resultado(resultados_pantalla, self.num_fil)
+        #imprimir_resultado(resultados_pantalla, self.num_fil)
         
     def obtener_resultados_pantalla(self):
         resultados = [['-' for j in range(0,self.num_col)] for i in range(0,self.num_fil)]

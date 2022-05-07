@@ -51,6 +51,8 @@ class Multiplicar(Screen):
 
     def on_pre_enter(self, *args):
         self.app.title = "Multiplicar"
+        self.tecla2 = self.ids["total"]
+        self.tecla2.focus = True
     
     def limpiar_tablas(self):
         for select in self.selecciones:
@@ -86,6 +88,7 @@ class Multiplicar(Screen):
         self.multi = self.ids["multi"]
         self.estados = self.seleccion_estado()
         self.pasar = False
+        self.resultado.focus = True
         #self.texto.text = f"Hola Carmen, ¿preparada para repasar las tablas?"
         #self.texto_multi.text = f"variable texto_multi: resultado = {self.resultado.text}"
         #self.multi.text = f"Probando la variable multi: total = {self.total.text}"
@@ -102,6 +105,7 @@ class Multiplicar(Screen):
         self.multi = self.ids["multi"]
         self.estados = self.seleccion_estado()
         self.pasar = False
+        self.resultado.focus = True
         #self.texto.text = f"Hola Carmen, ¿preparada para repasar las tablas?"
         #self.texto_multi.text = f"variable texto_multi: resultado = {self.resultado.text}"
         #self.multi.text = f"Probando la variable multi: total = {self.total.text}"
