@@ -3,6 +3,8 @@
 #:include kv/resultados.kv
 #:include kv/ajustes.kv
 #:include kv/sumar.kv
+##:include kv/puzle.kv
+#:include kv/multiplicacion.kv
 ##:include kv/reiniciar.kv
 
 MDNavigationLayout:
@@ -39,9 +41,10 @@ MDNavigationLayout:
                     Sumar:
                         id: sumar
                         name: "sumar"
-                    #Reiniciar:
-                        #id: reiniciar
-                        #name: "reiniciar"
+                    Multiplicacion:
+                        id: multiplicacion
+                        name: "multiplicacion"
+                    
 
 
     MDNavigationDrawer:
@@ -67,15 +70,6 @@ MDNavigationLayout:
                             nav_drawer.set_state()
                         IconLeftWidget:
                             icon: "language-python"
-
-                    OneLineIconListItem:
-                        text: "Multiplicar"
-                        # Aquí va lo que queremos ejecutar cuando se suelta el botón
-                        on_release:
-                            screen_manager.current = "multiplicar"
-                            nav_drawer.set_state()
-                        IconLeftWidget:
-                            icon: "multiplication-box"
                     
                     OneLineIconListItem:
                         text: "Sumar"
@@ -87,6 +81,24 @@ MDNavigationLayout:
                             icon: "plus-box"
                     
                     OneLineIconListItem:
+                        text: "Multiplicar"
+                        # Aquí va lo que queremos ejecutar cuando se suelta el botón
+                        on_release:
+                            screen_manager.current = "multiplicacion"
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon: "multiplication-box"
+                    
+                    OneLineIconListItem:
+                        text: "Repasar Tablas"
+                        # Aquí va lo que queremos ejecutar cuando se suelta el botón
+                        on_release:
+                            screen_manager.current = "multiplicar"
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon: "numeric"
+                    
+                    OneLineIconListItem:
                         text: "Resultados"
                         on_release:
                             screen_manager.current = "resultados"
@@ -94,10 +106,10 @@ MDNavigationLayout:
                         IconLeftWidget:
                             icon: "database"
                     
-                    # OneLineIconListItem:
-                    #     text: "Ajustes"
-                    #     on_release:
-                    #         screen_manager.current = "ajustes"
-                    #         nav_drawer.set_state()
-                    #     IconLeftWidget:
-                    #         icon: "cogs"
+                    OneLineIconListItem:
+                        text: "Ajustes"
+                        on_release:
+                            screen_manager.current = "ajustes"
+                            nav_drawer.set_state()
+                        IconLeftWidget:
+                            icon: "cogs"

@@ -24,6 +24,7 @@ class Sumar(Screen):
 
     def on_pre_enter(self, *args):
         self.app.title = "Sumar"
+        self.comprobar_celdas()
 
     def mostrar_suma(self):
         #self.pizarra = self.ids["pizarra"]
@@ -92,13 +93,14 @@ class Sumar(Screen):
                     self.celdas.append(self.texto)
                     self.grid.add_widget(self.texto)
 
-                elif i == self.num_fil-2 and j >= (7-mas):
-                    self.texto = Label(text = f"_______")
-                    self.texto.font_size = "40sp"
-                    #self.texto.size_hint = (1., .5)
-                    #self.texto.height = "20"
-                    #self.texto.valign = "top"
-                    #self.texto.halign = "center"
+                elif i == self.num_fil-2:
+                    if j >= (7-mas):
+                        self.texto = Label(text = f"-----")
+                    else:
+                        self.texto = Label(text = f" ")
+                    self.texto.font_size = "40sp" 
+                    self.texto.size_hint_y = None
+                    self.texto.height = "3dp"
                     self.celdas.append(self.texto)
                     self.grid.add_widget(self.texto)
 
@@ -145,13 +147,15 @@ class Sumar(Screen):
                     self.celdas.append(self.texto)
                     self.grid.add_widget(self.texto)
 
-                elif i == self.num_fil-2 and j >= (7-mas):
-                    self.texto = Label(text = f"_______")
-                    self.texto.font_size = "40sp"#80
-                    #self.texto.size_hint = (1., .2)
-                    #self.texto.height = "30"
-                    #self.texto.valign = "top"
-                    #self.texto.halign = "center"
+                elif i == self.num_fil-2:
+                    if j >= (7-mas):
+                        self.texto = Label(text = f"______")
+                    else:
+                        self.texto = Label(text = f" ")
+                    self.texto.font_size = "40sp"  
+                    self.texto.size_hint_y = None
+                    self.texto.height = "1dp"
+                    #self.texto = MDLabel(text = f"_____________", font_style = "H6", theme_text_color = "Custom", text_color = (1, 1, 1, 1))
                     self.celdas.append(self.texto)
                     self.grid.add_widget(self.texto)
 
