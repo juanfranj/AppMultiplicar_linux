@@ -51,8 +51,8 @@ class Multiplicar(Screen):
 
     def on_pre_enter(self, *args):
         self.app.title = "Multiplicar"
-        self.tecla2 = self.ids["total"]
-        self.tecla2.focus = True
+        #self.tecla2 = self.ids["total"]
+        #self.tecla2.focus = True
     
     def limpiar_tablas(self):
         for select in self.selecciones:

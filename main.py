@@ -13,7 +13,7 @@ from libs.resultados import Resultados
 from libs.ajustes import Ajustes
 from libs.reiniciar import Reiniciar_BaseDatos
 from libs.sumar import Sumar
-#from libs.puzle import Puzle
+from libs.estudiar import Estudiar
 from libs.multiplicacion import Multiplicacion
 
 LabelBase.register(name = "UrbanClass",
