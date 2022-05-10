@@ -29,7 +29,7 @@ source.include_exts = py,png,jpg,kv,atlas,txt,db,ttf
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.2
+version = 0.1
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -44,7 +44,7 @@ requirements = python3,kivy,kivymd,sqlite3, pil
 # requirements.source.kivy = ../../kivy
 
 # (str) Presplash of the application
-#presplash.filename = %(source.dir)s/resouces/logo.png
+#presplash.filename = %(source.dir)s/data/presplash.png
 presplash.filename = resources/presplash.png
 
 # (str) Icon of the application
@@ -300,8 +300,8 @@ android.allow_backup = True
 #p4a.fork = kivy
 
 # (str) python-for-android branch to use, defaults to master
-p4a.branch = develop
-#p4a.branch = master
+#p4a.branch = develop
+p4a.branch = master
 
 # (str) python-for-android specific commit to use, defaults to HEAD, must be within p4a.branch
 #p4a.commit = HEAD

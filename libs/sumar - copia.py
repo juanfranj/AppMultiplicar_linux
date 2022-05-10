@@ -2,13 +2,12 @@
 from kivy.uix.screenmanager import Screen
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.label import Label
-from kivymd.uix.label import MDLabel
 from kivymd.uix.button import MDFillRoundFlatButton
-from kivymd.uix.selectioncontrol import MDCheckbox
-from kivymd.uix.textfield import MDTextField, MDTextFieldRound
+from kivymd.uix.textfield import MDTextField
  
 
 from kivymd.app import MDApp
+
 
 
 
@@ -19,7 +18,6 @@ class Sumar(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.app = MDApp.get_running_app()
-        self.dificultad = []
         self.celdas = []
         self.resultados = []
         self.restos = []
@@ -27,42 +25,14 @@ class Sumar(Screen):
     def on_pre_enter(self, *args):
         self.app.title = "Sumar"
         self.comprobar_celdas()
-    
-    def checkbox_click(self, instance, value):
-        for i in self.dificultad:
-            if i != instance:
-                i.active = False
-            else:
-                i.active = value
-        instance.active = value
-    
-    def on_kv_post(self, *args):
-        self.nivel = self.ids["dificultad"]
-        niveles = ["Facil", "Medio", "Dificil"]
-        for nivel in niveles:
-            self.nombre = MDLabel(
-                text = nivel,
-                size_hint = (.8, .5),
-                theme_text_color = "Custom",
-                text_color = (1, 1, 1, 1),
-                halign = "center"
-                )
-            self.nombre.font_name = "Urban Class"
-            self.font_size = "15sp"
-            self.check = MDCheckbox(size_hint= (.2, .2))
-            self.check.bind(active=self.checkbox_click)
-            self.dificultad.append(self.check)
-            self.nivel.add_widget(self.nombre)
-            self.nivel.add_widget(self.check)
-        self.dificultad[0].active = True
 
     def mostrar_suma(self):
         #self.pizarra = self.ids["pizarra"]
         self.comprobar_celdas()
 
         self.texto_ayuda = self.ids["informacion"]
-        #self.sumandos = self.ids["sumandos"]
-        #self.digitos = self.ids["digitos"]
+        self.sumandos = self.ids["sumandos"]
+        self.digitos = self.ids["digitos"]
         self.datos_entrada()
         self.numeros = devolver_sumandos(self.int_sumandos, self.int_digitos)
         self.matriz, self.num_fil, self.num_col = suma(self.numeros, self.int_digitos)
@@ -71,12 +41,13 @@ class Sumar(Screen):
         self.grid.cols = 8
         self.grid.rows = 12
         
+        
             
         self.escribir_sumandos(self.int_digitos)
         
         #print(f"El numero de celdas es: {len(self.celdas)}")
         #imprimir_pregunta(self.matriz, self.num_fil)
-        imprimir_resultado(self.matriz, self.num_fil)
+        #imprimir_resultado(self.matriz, self.num_fil)
         self.texto_ayuda.text = f"SUMAR"  
         #self.texto_ayuda.haling = "center"           
     
@@ -101,8 +72,6 @@ class Sumar(Screen):
             for celda in self.celdas:
                 self.grid.remove_widget(celda)
             self.celdas = []
-            self.resultados = []
-            self.restos = []
            
             
 
@@ -120,16 +89,15 @@ class Sumar(Screen):
                     self.grid.add_widget(self.texto)
 
                 elif self.matriz[i][j] != '-' and i != self.num_fil-2:
-                    self.texto = Label(text = f"{self.matriz[i][j]}", font_size = "35sp", font_name = "UrbanClass")
+                    self.texto = Label(text = f"{self.matriz[i][j]}", font_size = "35sp", font_name = "UrbanClass",)
                     self.celdas.append(self.texto)
                     self.grid.add_widget(self.texto)
 
                 elif i == self.num_fil-2:
                     if j >= (7-mas):
-                        self.texto = Label(text = f"{chr(45)*5}")
+                        self.texto = Label(text = f"-----")
                     else:
                         self.texto = Label(text = f" ")
-
                     self.texto.font_size = "40sp" 
                     self.texto.size_hint_y = None
                     self.texto.height = "3dp"
@@ -155,33 +123,33 @@ class Sumar(Screen):
         for i in range(0,self.num_fil):
             for j in range(0,self.num_col):
                 if (i == 0 and j >= (7-mas)) or (i == self.num_fil-1 and j >= (7-mas)):
+                    #self.texto = Label(text = f"")
                     self.texto = MDTextField(
+                        #hint_text = "1..9",
                         input_type = "number",
                         halign ="center",
                         text_color = (1.0, 1.0, 1.0, 1),
                         font_name = "UrbanClass",
                         hint_text = '?'
-                        
                     )
                     if i == 0:
-                        self.texto.font_size = '25sp'
+                        self.texto.font_size = '25sp'#45
                         self.restos.append(self.texto)
                     else:
-                        self.texto.font_size = '35sp'
+                        self.texto.font_size = '35sp'#65
                         self.resultados.append(self.texto)
-                    
+
                     self.celdas.append(self.texto)
                     self.grid.add_widget(self.texto)
 
-                elif self.matriz[i][j] != '-' and i != self.num_fil-2:
+                elif self.matriz[i][j] != '-' and i != self.num_fil-2:#65
                     self.texto = Label(text = f"{self.matriz[i][j]}", font_size = "35sp", font_name = "UrbanClass")
-                    #self.texto = MDLabel(text = f"{self.matriz[i][j]}", font_style = "H6", theme_text_color = "Custom", text_color = (1, 1, 1, 1))
                     self.celdas.append(self.texto)
                     self.grid.add_widget(self.texto)
 
                 elif i == self.num_fil-2:
                     if j >= (7-mas):
-                        self.texto = Label(text = f"____")
+                        self.texto = Label(text = f"______")
                     else:
                         self.texto = Label(text = f" ")
                     self.texto.font_size = "40sp"  
@@ -193,7 +161,6 @@ class Sumar(Screen):
 
                 else:
                     self.texto = Label(text = f"")
-                    #self.texto = MDLabel(text = f"", font_style = "H6", theme_text_color = "Custom", text_color = (1, 1, 1, 1))
                     self.celdas.append(self.texto)
                     self.grid.add_widget(self.texto)
 
@@ -205,47 +172,29 @@ class Sumar(Screen):
             self.grid.add_widget(self.texto)
     
     def datos_entrada(self):
-        # try:
-        #     if int(self.sumandos.text) > 5 or int(self.sumandos.text) < 2:
-        #         self.int_sumandos = 3
-        #     else:
-        #         self.int_sumandos = int(self.sumandos.text)
-        # except:
-        #     self.int_sumandos = 3
-        #     #self.texto_ayuda.text = f"Sumandos_error: {self.int_sumandos} Digitos: {self.digitos.text}"
+        try:
+            if int(self.sumandos.text) > 5 or int(self.sumandos.text) < 2:
+                self.int_sumandos = 2
+            else:
+                self.int_sumandos = int(self.sumandos.text)
+        except:
+            self.int_sumandos = 2
+            #self.texto_ayuda.text = f"Sumandos_error: {self.int_sumandos} Digitos: {self.digitos.text}"
         
-        # #calculo de digitos
-        # try:
-        #     if int(self.digitos.text) > 4 or int(self.digitos.text) < 1:
-        #         self.int_digitos = 3
-        #     else:
-        #         self.int_digitos = int(self.digitos.text)
-        # except:
-        #     self.int_digitos = 3
-        #     #self.texto_ayuda.text = f"Sumandos: {self.int_sumandos} Digitos_error: {self.int_digitos}"
-        if self.dificultad[0].active == True:
-            self.str_dif = "facil"
-            self.int_sumandos = 2
-            self.int_digitos = 2
-        elif self.dificultad[1].active == True:
-            self.str_dif = "medio"
-            self.int_sumandos = 3
+        #calculo de digitos
+        try:
+            if int(self.digitos.text) > 4 or int(self.digitos.text) < 1:
+                self.int_digitos = 3
+            else:
+                self.int_digitos = int(self.digitos.text)
+        except:
             self.int_digitos = 3
-        elif self.dificultad[2].active == True:
-            self.str_dif = "dificil"
-            self.int_sumandos = 4
-            self.int_digitos = 4
-        else:
-            self.dificultad[0].active = True
-            self.str_dif = "facil"
-            self.int_sumandos = 2
-            self.int_digitos = 2
+            #self.texto_ayuda.text = f"Sumandos: {self.int_sumandos} Digitos_error: {self.int_digitos}"
 
-        #self.sumandos.text = ""
-        #self.digitos.text = ""
+        self.sumandos.text = ""
+        self.digitos.text = ""
         #return self.int_sumandos, self.int_digitos
 
-    
     def mostrar_comprobar_resultado(self):
         try:
             
@@ -273,7 +222,7 @@ class Sumar(Screen):
         errores_resultados = comprobar(resultados, self.matriz[-1])
         self.escribir_comprobar(errores_resultados, self.resultados)
         self.escribir_comprobar(errores_restos, self.restos)
-        
+
         errores = len(errores_restos) + len(errores_resultados)
         if errores > 0:
             self.texto_ayuda.text = f"{errores} ERRORES"  
@@ -307,10 +256,8 @@ class Sumar(Screen):
             
             if not isinstance(lista[error], str):
                 lista[error].text_color = (1.0, .0, .0, 1)
-                lista[error].text = ""
+                lista[error].text = ''
 
                 if lista[error].text == "":
                     lista[error].hint_text = '?'
                     lista[error].haling = "center"
-                
-

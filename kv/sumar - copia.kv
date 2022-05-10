@@ -19,23 +19,56 @@
             canvas:
                 Color:
                     rgba: .04, .33, .27, 1
-                RoundedRectangle:
+                Rectangle:
                     pos: self.pos
                     size: self.size
                     #radius:[(20.0, 20.0), (20.0, 20.0), (20.0, 20.0), (20.0, 20.0)]
             
             FloatLayout:
 
-                GridLayout:
-                    id: dificultad
-                    size_hint: (.75, 1)
-                    pos_hint: {"x": .0, "center_y": .5}
-                    rows: 1
-                    haling: "center"
+                MDLabel:
+                    pos_hint: {"center_x":.15, "center_y":.5}
+                    size_hint: (.4, .5)
+                    font_style: "H6"
+                    font_name : "Urban Class"
+                    font_size: "18sp"
+                    halign: "center"
+                    text: "Sumandos:"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+
+                MDTextFieldRect:
+                    id: sumandos
+                    pos_hint:{"center_x":.34, "center_y": 0.5}
+                    size_hint:(.09, .32)
+                    hint_text: "[2-5]"
+                    input_type: "number"
+                    font_style:"H6"
+                    halign: "center"
+                
+                MDLabel:
+                    pos_hint: {"center_x":.51, "center_y":.5}
+                    size_hint: (.3, .5)
+                    font_style: "H6"
+                    font_name : "Urban Class"
+                    font_size: "18sp"
+                    theme_text_color: "Custom"
+                    text_color: 1, 1, 1, 1
+                    halign: "center"
+                    text: "Digitos:"
+
+                MDTextFieldRect:
+                    id: digitos
+                    pos_hint:{"center_x":.69, "center_y": 0.5}
+                    hint_text: "[1-4]"
+                    size_hint:(.09, .32)
+                    input_type: "number"
+                    font_style:"H6"
+                    halign: "center"
                 
                 MDFillRoundFlatButton:
 
-                    pos_hint: {"x":0.76, "center_y":.5}
+                    pos_hint: {"x":0.75, "center_y":.5}
                     #size_hint: 0.3, None
                     id: calcular
                     text: "Comenzar"
@@ -43,7 +76,7 @@
                     text_color: 1, 1, 1, 1
                     md_bg_color: 0.3, 0.3, .3, 1
                     font_style: "H6"
-                    font_size: "15sp"
+                    font_size: "16sp"
                     on_release: root.mostrar_suma()
         
         BoxLayout:
@@ -53,7 +86,7 @@
             canvas:
                 Color:
                     rgba: .04, .33, .27, 1
-                RoundedRectangle:
+                Rectangle:
                     pos: self.pos
                     size: self.size
                     #radius:[(20.0, 20.0), (20.0, 20.0), (20.0, 20.0), (20.0, 20.0)]
